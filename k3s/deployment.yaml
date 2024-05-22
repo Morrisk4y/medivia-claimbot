@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: medivia-claim-bot-deployment
+  labels:
+    app: medivia-claim-bot
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: medivia-claim-bot
+  template:
+    metadata:
+      labels:
+        app: medivia-claim-bot
+    spec:
+      containers:
+      - name: medivia-claim-bot
+        image: your.docker-registry.url/medivia-claim-bot:latest
+        imagePullPolicy: Always
+        # Add any additional configuration you need for your container here
+        env:
+          - name: DISCORD_TOKEN
+            value: "fill here"
+          - name: MEDIVIA_WORLD
+            value: "fill here"
+          - name: CLAIM_DURATION_SECONDS
+            value: "fill here"
+          - name: RESUME_DURATION_SECONDS
+            value: "fill here"
+          - name: ACCEPT_CLAIM_SECONDS
+            value: "fill here"
+          - name: GUILD_ID
+            value: "fill here"
+      imagePullSecrets:
+      - name: registry-secret
