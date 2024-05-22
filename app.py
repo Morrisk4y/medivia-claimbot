@@ -172,8 +172,8 @@ def initiate_claim_sequence(ctx, channel_id, user_id, message):
 async def handle_timer(ctx, message, duration, owner):
     channel_id = ctx.channel.id
     while duration > 0:
-        await asyncio.sleep(10)
-        duration -= 10
+        await asyncio.sleep(60)
+        duration -= 60
         remaining_time = max(duration, 0)  # Ensure the remaining time doesn't go negative
 
         # Calculate hours, minutes, and seconds
